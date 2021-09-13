@@ -60,6 +60,16 @@ body {
 .cart-main {
   padding-right: 30px;
 }
+#addToCart-btn{
+  color: #fff;
+  background-color: #008B8B;
+  border: 0;
+}
+#details-btn{
+  color: #000;
+  background-color: #DEB887;
+  border: 0;
+}
 @media only screen and (max-width: 768px) {
   #all-products {
     display: grid;
