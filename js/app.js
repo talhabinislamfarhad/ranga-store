@@ -13,26 +13,28 @@ const showProducts = (products) => {
     div.classList.add("col");
     div.innerHTML = `
             <div class="card h-100">
-                <div class="p-3">
-                    <img class="card-img-top product-image" src=${image}></img>
-                </div>
-                <div class="card-body">
-                <h5 class="card-title">${product.title}</h5><hr>
+              <img class="card-img-top product-image p-3" src=${image}></img>
+              <div class="card-body">
+                <h5 class="card-title">${product.title}</h5>
+                <hr>
                 <h6>Category: ${product.category}</h6>
                 <h6>Total Rating: ${product.rating.count}</h6>
                 <div class="">
-                <span class = "fs-6 rating">Rating: </span>
-                    <span class = "text-warning fs-6 fw-bold">${displayRateIcon(product.rating.rate)} <span class = "text-secondary fw-bold">(${product.rating.rate})</span></span>
-                </div><hr>
+                  <span class="fs-6 rating">Rating: </span>
+                  <span class="text-warning fs-6 fw-bold">${displayRateIcon(product.rating.rate)} <span
+                      class="text-secondary fw-bold">(${product.rating.rate})</span></span>
+                </div>
+                <hr>
                 <h5>Price: $${product.price}</h5>
+              </div>
+              <div class="card-footer text-center">
+                <div class="d-flex flex-column flex-md-row justify-content-between">
+                  <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn"
+                    class="btn btn-outline-success fw-bold mb-2">Add to cart</button>
+                  <button id="details-btn" class="btn btn-outline-danger fw-bold mb-2">Details</button>
                 </div>
-                <div class="card-footer text-center">
-                  <div class="d-flex flex-column flex-md-row justify-content-between">
-                    <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="btn btn-outline-success fw-bold mb-2">Add to cart</button>
-                    <button id="details-btn" class="btn btn-outline-danger fw-bold mb-2">Details</button>
-                  </div>
-                </div>
-            </div>     
+              </div>
+            </div>  
         `;
     document.getElementById("all-products").appendChild(div);
   }
@@ -90,7 +92,7 @@ const updateTotal = () => {
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
 
-// rating star 
+// rating 
 const displayRateIcon = (rate) => {
   const floorRate = Math.floor(rate);
   let rateIcon = "";
